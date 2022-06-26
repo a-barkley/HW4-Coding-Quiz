@@ -1,0 +1,19 @@
+* {
+    font-family: monospace;
+}
+
+.test {
+    text-align: center
+}
+
+.buttons {
+    text-align: center;
+}
+
+#welcome {
+    text-align: center;
+}
+
+#timer {
+    text-align: center;
+}
