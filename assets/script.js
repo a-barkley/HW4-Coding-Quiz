@@ -33,13 +33,13 @@ var questionPrompt4 = {
 var questionPrompt5 = {
     question: "What is the correct syntax for declaring a variable?",
     answer1: "var == 'myvariable'",
-    answer2: "'myvariable'",
-    answer3: "variable = 'myvariable'",
-    answer4: "var = 'myvariable'"
+    answer2: "'myvariable' =",
+    answer3: "variable myvariable =",
+    answer4: "var myvariable ="
 }
 
-var questionsArray = [questionPrompt1, questionPrompt2];
-var answersArray = ["nested"];
+var questionsArray = [questionPrompt1, questionPrompt2, questionPrompt3, questionPrompt4, questionPrompt5];
+var correctAnswers = ["nested", "console.log", "an array", "a function", "var myvariable ="];
 
 function checkAnswer(answerSelected, realAnswer) {
     return (answerSelected === realAnswer);
@@ -49,9 +49,14 @@ function makeQuiz() {
     for (var i = 0; i < questionsArray.length; i++) {
         document.getElementByID("questionPlaceholder").innerHTML = questionsArray[i].question;
         document.getElementByID("answer1Placeholder").innerHTML = questionsArray[i].answer1;
-        answer1Placeholder.addEventListener("click", checkAnswer(questionsArray[i].answer1, answersArray[i]));
-        answer2Placeholder = quizQuestions.answer2;
-        answer3Placeholder = quizQuestions.answer3;
+        document.getElementByID("answer2Placeholder").innerHTML = questionsArray[i].answer2;
+        document.getElementByID("answer3Placeholder").innerHTML = questionsArray[i].answer3;
+        document.getElementByID("answer4Placeholder").innerHTML = questionsArray[i].answer4;
+
+        document.getElementByID("answer1Placeholder").addEventListener("click", checkAnswer(questionsArray[i].answer1, correctAnswers[i]));
+        document.getElementByID("answer2Placeholder").addEventListener("click", checkAnswer(questionsArray[i].answer2, correctAnswers[i]));
+        document.getElementByID("answer3Placeholder").addEventListener("click", checkAnswer(questionsArray[i].answer3, correctAnswers[i]));
+        document.getElementByID("answer4Placeholder").addEventListener("click", checkAnswer(questionsArray[i].answer4, correctAnswers[i]));
     }
 }
 
