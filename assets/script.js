@@ -44,8 +44,10 @@ var correctAnswers = ["nested", "console.log", "an array", "a function", "var my
 function checkAnswer(answerSelected, realAnswer) {
     if (answerSelected === realAnswer) {
         return true;
+        console.log('true')
     } else {
         return false;
+        console.log('false')
     }
 }
 
@@ -58,10 +60,10 @@ function makeQuiz() {
         document.getElementById("answer3Placeholder").innerHTML = questionsArray[i].answer3;
         document.getElementById("answer4Placeholder").innerHTML = questionsArray[i].answer4;
 
-        document.getElementById("answer1Placeholder").addEventListener("click", checkAnswer(questionsArray[i].answer1, correctAnswers[i]));
-        document.getElementById("answer2Placeholder").addEventListener("click", checkAnswer(questionsArray[i].answer2, correctAnswers[i]));
-        document.getElementById("answer3Placeholder").addEventListener("click", checkAnswer(questionsArray[i].answer3, correctAnswers[i]));
-        document.getElementById("answer4Placeholder").addEventListener("click", checkAnswer(questionsArray[i].answer4, correctAnswers[i]));
+        document.getElementById("answer1Placeholder").addEventListener("click", function () { checkAnswer(questionsArray[i].answer1, correctAnswers[i]) });
+        document.getElementById("answer2Placeholder").addEventListener("click", function () { checkAnswer(questionsArray[i].answer2, correctAnswers[i]) });
+        document.getElementById("answer3Placeholder").addEventListener("click", function () { checkAnswer(questionsArray[i].answer3, correctAnswers[i]) });
+        document.getElementById("answer4Placeholder").addEventListener("click", function () { checkAnswer(questionsArray[i].answer4, correctAnswers[i]) });
     }
 }
 
