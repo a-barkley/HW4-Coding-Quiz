@@ -42,21 +42,26 @@ var questionsArray = [questionPrompt1, questionPrompt2, questionPrompt3, questio
 var correctAnswers = ["nested", "console.log", "an array", "a function", "var myvariable ="];
 
 function checkAnswer(answerSelected, realAnswer) {
-    return (answerSelected === realAnswer);
+    if (answerSelected === realAnswer) {
+        return true;
+    } else {
+        return false;
+    }
 }
 
 function makeQuiz() {
+    console.log("quiz")
     for (var i = 0; i < questionsArray.length; i++) {
-        document.getElementByID("questionPlaceholder").innerHTML = questionsArray[i].question;
-        document.getElementByID("answer1Placeholder").innerHTML = questionsArray[i].answer1;
-        document.getElementByID("answer2Placeholder").innerHTML = questionsArray[i].answer2;
-        document.getElementByID("answer3Placeholder").innerHTML = questionsArray[i].answer3;
-        document.getElementByID("answer4Placeholder").innerHTML = questionsArray[i].answer4;
+        document.getElementById("questionPlaceholder").innerHTML = questionsArray[i].question;
+        document.getElementById("answer1Placeholder").innerHTML = questionsArray[i].answer1;
+        document.getElementById("answer2Placeholder").innerHTML = questionsArray[i].answer2;
+        document.getElementById("answer3Placeholder").innerHTML = questionsArray[i].answer3;
+        document.getElementById("answer4Placeholder").innerHTML = questionsArray[i].answer4;
 
-        document.getElementByID("answer1Placeholder").addEventListener("click", checkAnswer(questionsArray[i].answer1, correctAnswers[i]));
-        document.getElementByID("answer2Placeholder").addEventListener("click", checkAnswer(questionsArray[i].answer2, correctAnswers[i]));
-        document.getElementByID("answer3Placeholder").addEventListener("click", checkAnswer(questionsArray[i].answer3, correctAnswers[i]));
-        document.getElementByID("answer4Placeholder").addEventListener("click", checkAnswer(questionsArray[i].answer4, correctAnswers[i]));
+        document.getElementById("answer1Placeholder").addEventListener("click", checkAnswer(questionsArray[i].answer1, correctAnswers[i]));
+        document.getElementById("answer2Placeholder").addEventListener("click", checkAnswer(questionsArray[i].answer2, correctAnswers[i]));
+        document.getElementById("answer3Placeholder").addEventListener("click", checkAnswer(questionsArray[i].answer3, correctAnswers[i]));
+        document.getElementById("answer4Placeholder").addEventListener("click", checkAnswer(questionsArray[i].answer4, correctAnswers[i]));
     }
 }
 
