@@ -41,6 +41,7 @@ var questionPrompt5 = {
 var questionsArray = [questionPrompt1, questionPrompt2, questionPrompt3, questionPrompt4, questionPrompt5];
 var correctAnswers = ["nested", "console.log", "an array", "a function", "var myvariable ="];
 var i = 0
+var playerInitials = []
 
 var timeLeft = 60
 var timer = document.getElementById("timerPlaceholder")
@@ -57,9 +58,8 @@ function timerFunction() {
 }
 
 function checkAnswer(answerSelected, realAnswer) {
-    if (answerSelected === realAnswer) {
-        console.log('true'); 
-        i++;
+    if (answerSelected == realAnswer) {
+        i++
         makeQuiz();
     } else {
         console.log('false');
@@ -80,13 +80,16 @@ document.getElementById("answer4Placeholder").addEventListener("click", function
 });
 
 function makeQuiz() {
+    if (i <= 4) {
     document.getElementById("questionPlaceholder").innerHTML = questionsArray[i].question;
     document.getElementById("answer1Placeholder").innerHTML = questionsArray[i].answer1;
     document.getElementById("answer2Placeholder").innerHTML = questionsArray[i].answer2;
     document.getElementById("answer3Placeholder").innerHTML = questionsArray[i].answer3;
     document.getElementById("answer4Placeholder").innerHTML = questionsArray[i].answer4;
-
-
+    } else if (i >= 5) {
+        playerInitials += prompt("Please enter your initials: ")
+    }
+    
 }
 
 function makeHighscores() {
