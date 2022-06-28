@@ -41,7 +41,7 @@ var questionPrompt5 = {
 var questionsArray = [questionPrompt1, questionPrompt2, questionPrompt3, questionPrompt4, questionPrompt5];
 var correctAnswers = ["nested", "console.log", "an array", "a function", "var myvariable ="];
 var i = 0
-var playerInitials = []
+var playerInitials = ""
 
 var timeLeft = 60
 var timer = document.getElementById("timerPlaceholder")
@@ -66,7 +66,7 @@ function checkAnswer(answerSelected, realAnswer) {
         makeQuiz();
     } else {
         console.log('false');
-        timeLeft - 5;
+        timeLeft -= 5;
     }
 }
 
@@ -101,14 +101,14 @@ function makeQuiz() {
     document.getElementById("answer3Placeholder").innerHTML = questionsArray[i].answer3;
     document.getElementById("answer4Placeholder").innerHTML = questionsArray[i].answer4;
     } else if (i >= 5) {
-        playerInitials.push(prompt("Please enter your initials: "));
+        playerInitials = (prompt("Please enter your initials: "));
         localStorage.setItem(playerInitials, timeLeft)
     }
 }
 
 function makeHighscores() {
     console.log("highscores")
-    
+
 }
 
 start.addEventListener("click", makeQuiz)
