@@ -54,6 +54,9 @@ function timerFunction() {
         if (timeLeft === 0) {
             clearInterval(timerInterval);
         } 
+        if (i >=5) {
+            clearInterval(timerInterval);
+        }
     }, 1000)
 }
 
@@ -63,7 +66,18 @@ function checkAnswer(answerSelected, realAnswer) {
         makeQuiz();
     } else {
         console.log('false');
+        timeLeft - 5;
     }
+}
+
+function resetQuiz() {
+    i = 0;
+    document.getElementById("questionPlaceholder").innerHTML = "";
+    document.getElementById("answer1Placeholder").innerHTML = "";
+    document.getElementById("answer2Placeholder").innerHTML = "";
+    document.getElementById("answer3Placeholder").innerHTML = "";
+    document.getElementById("answer4Placeholder").innerHTML = "";
+    timeLeft = 60;
 }
 
 document.getElementById("answer1Placeholder").addEventListener("click", function () { 
@@ -87,15 +101,17 @@ function makeQuiz() {
     document.getElementById("answer3Placeholder").innerHTML = questionsArray[i].answer3;
     document.getElementById("answer4Placeholder").innerHTML = questionsArray[i].answer4;
     } else if (i >= 5) {
-        playerInitials += prompt("Please enter your initials: ")
+        playerInitials.push(prompt("Please enter your initials: "));
+        localStorage.setItem(playerInitials, timeLeft)
     }
-    
 }
 
 function makeHighscores() {
     console.log("highscores")
+    
 }
 
 start.addEventListener("click", makeQuiz)
 start.addEventListener("click", timerFunction)
+reset.addEventListener("click", resetQuiz)
 highscores.addEventListener("click", makeHighscores)
