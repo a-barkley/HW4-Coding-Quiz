@@ -41,11 +41,25 @@ var questionPrompt5 = {
 var questionsArray = [questionPrompt1, questionPrompt2, questionPrompt3, questionPrompt4, questionPrompt5];
 var correctAnswers = ["nested", "console.log", "an array", "a function", "var myvariable ="];
 var isCorrect = false
-let i = 0
+var i = 0
+
+var timeLeft = 60
+var timer = document.getElementById("timerPlaceholder")
+
+function timerFunction() {
+    console.log("I am working")
+    var timerInterval = setInterval(function () {
+        timeLeft--;
+        timer.textContent = "Time Remaining: " + timeLeft;
+        if (seconds === 0) {
+            clearInterval(timerInterval);
+        } 
+    }, 1000)
+}
 
 function checkAnswer(answerSelected, realAnswer) {
     if (answerSelected === realAnswer) {
-        console.log('true');
+        console.log('true'); 
         var isCorrect = true;
         i++;
         makeQuiz();
@@ -56,8 +70,6 @@ function checkAnswer(answerSelected, realAnswer) {
 }
 
 function makeQuiz() {
-    console.log("quiz")
-
     document.getElementById("questionPlaceholder").innerHTML = questionsArray[i].question;
     document.getElementById("answer1Placeholder").innerHTML = questionsArray[i].answer1;
     document.getElementById("answer2Placeholder").innerHTML = questionsArray[i].answer2;
@@ -76,12 +88,12 @@ function makeQuiz() {
     document.getElementById("answer4Placeholder").addEventListener("click", function () { 
         checkAnswer(questionsArray[i].answer4, correctAnswers[i]);
     });
-
+    timerFunction();
 }
 
 function makeHighscores() {
     console.log("highscores")
 }
 
-start.addEventListener("click", makeQuiz);
+start.addEventListener("click", makeQuiz)
 highscores.addEventListener("click", makeHighscores)
