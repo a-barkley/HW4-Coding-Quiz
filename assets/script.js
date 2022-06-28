@@ -51,7 +51,7 @@ function timerFunction() {
     var timerInterval = setInterval(function () {
         timeLeft--;
         timer.textContent = "Time Remaining: " + timeLeft;
-        if (seconds === 0) {
+        if (timeLeft === 0) {
             clearInterval(timerInterval);
         } 
     }, 1000)
@@ -88,7 +88,6 @@ function makeQuiz() {
     document.getElementById("answer4Placeholder").addEventListener("click", function () { 
         checkAnswer(questionsArray[i].answer4, correctAnswers[i]);
     });
-    timerFunction();
 }
 
 function makeHighscores() {
@@ -96,4 +95,5 @@ function makeHighscores() {
 }
 
 start.addEventListener("click", makeQuiz)
+start.addEventListener("click", timerFunction)
 highscores.addEventListener("click", makeHighscores)
