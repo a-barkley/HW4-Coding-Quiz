@@ -8,17 +8,27 @@
 
 .buttons {
     text-align: center;
+    
 }
 
 .quizBox {
     text-align: center;
 }
 
+.answersBox {
+    font-size: 24px;
+}
+
 #welcome {
     text-align: center;
+    font-size: 34px;
 }
 
 #timerPlaceholder {
     text-align: center;
+    font-size: 24px;
 }
 
+#questionPlaceholder {
+    font-size: 34px;
+}
