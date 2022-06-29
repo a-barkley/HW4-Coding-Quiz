@@ -123,13 +123,6 @@ function makeQuiz() {
     }
 }
 
-
-function makeHighscores() {
-    console.log("highscores")
-
-}
-
 start.addEventListener("click", makeQuiz)
 start.addEventListener("click", timerFunction)
 reset.addEventListener("click", resetQuiz)
-highscores.addEventListener("click", makeHighscores)
