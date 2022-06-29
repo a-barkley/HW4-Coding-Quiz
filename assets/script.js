@@ -45,16 +45,22 @@ var playerInitials = ""
 
 var timeLeft = 60
 var timer = document.getElementById("timerPlaceholder")
+var timerInterval;
+timer.textContent = "Time left: " + timeLeft;
 
 function timerFunction() {
     console.log("I am working")
-    var timerInterval = setInterval(function () {
+    clearInterval(timerInterval);
+    timerInterval = setInterval(function () {
         timeLeft--;
-        timer.textContent = "Time Remaining: " + timeLeft;
+        timer.textContent = "Time left: " + timeLeft;
         if (timeLeft === 0) {
             clearInterval(timerInterval);
         } 
         if (i >=5) {
+            clearInterval(timerInterval);
+        }
+        if (timeLeft < 0) {
             clearInterval(timerInterval);
         }
     }, 1000)
@@ -71,13 +77,19 @@ function checkAnswer(answerSelected, realAnswer) {
 }
 
 function resetQuiz() {
+    timeLeft = 60;
+    timer.textContent = "Time left: " + timeLeft;
     i = 0;
     document.getElementById("questionPlaceholder").innerHTML = "";
     document.getElementById("answer1Placeholder").innerHTML = "";
     document.getElementById("answer2Placeholder").innerHTML = "";
     document.getElementById("answer3Placeholder").innerHTML = "";
     document.getElementById("answer4Placeholder").innerHTML = "";
-    timeLeft = 60;
+    clearInterval(timerInterval);
+    document.getElementById("answer1Placeholder").style.cssText = "width: 300px; margin-left: auto; margin-right: auto;";
+    document.getElementById("answer2Placeholder").style.cssText = "width: 300px; margin-left: auto; margin-right: auto;";
+    document.getElementById("answer3Placeholder").style.cssText = "width: 300px; margin-left: auto; margin-right: auto;";
+    document.getElementById("answer4Placeholder").style.cssText = "width: 300px; margin-left: auto; margin-right: auto;";
 }
 
 document.getElementById("answer1Placeholder").addEventListener("click", function () { 
@@ -100,11 +112,17 @@ function makeQuiz() {
     document.getElementById("answer2Placeholder").innerHTML = questionsArray[i].answer2;
     document.getElementById("answer3Placeholder").innerHTML = questionsArray[i].answer3;
     document.getElementById("answer4Placeholder").innerHTML = questionsArray[i].answer4;
+
+    document.getElementById("answer1Placeholder").style.cssText = "border: 2px solid black; width: 300px; margin-left: auto; margin-right: auto;";
+    document.getElementById("answer2Placeholder").style.cssText = "border: 2px solid black; width: 300px; margin-left: auto; margin-right: auto;";
+    document.getElementById("answer3Placeholder").style.cssText = "border: 2px solid black; width: 300px; margin-left: auto; margin-right: auto;";
+    document.getElementById("answer4Placeholder").style.cssText = "border: 2px solid black; width: 300px; margin-left: auto; margin-right: auto;";
     } else if (i >= 5) {
         playerInitials = (prompt("Please enter your initials: "));
-        localStorage.setItem(playerInitials, timeLeft)
+        localStorage.setItem(playerInitials, timeLeft);
     }
 }
+
 
 function makeHighscores() {
     console.log("highscores")

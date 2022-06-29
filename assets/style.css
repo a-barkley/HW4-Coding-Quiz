@@ -25,10 +25,13 @@
 }
 
 #timerPlaceholder {
-    text-align: center;
+    position: fixed;
+    top: 15px;
+    left: 15px;
     font-size: 24px;
 }
 
 #questionPlaceholder {
     font-size: 34px;
 }
+
